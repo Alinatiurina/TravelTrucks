@@ -3,7 +3,6 @@ import CarsList from "../../components/CarsList/CarsList";
 import Filters from "../../components/Filters/Filters";
 import { useEffect, useState } from "react";
 import { GetCars } from "../../../cars-api";
-import { IoPaperPlane } from "react-icons/io5";
 
 export default function Catalog() {
     const [cars, setCars] = useState([]);
@@ -33,7 +32,7 @@ export default function Catalog() {
                 setLoading(true);
                 const data = await GetCars();
                 setCars(data.items);
-                setFilteredCars(data.items); // Встановлюємо відфільтровані авто для початкового стану
+                setFilteredCars(data.items);
             } catch (error) {
                 setError(true);
             } finally {
@@ -44,7 +43,6 @@ export default function Catalog() {
     }, []);
 
     useEffect(() => {
-        // Фільтрування автомобілів при зміні фільтрів
         const applyFilters = () => {
             const filtered = cars.filter(car => {
                 const equipmentFilters = filters.equipment
@@ -73,7 +71,7 @@ export default function Catalog() {
         };
 
         applyFilters();
-    }, [filters, cars]); // Застосовуємо фільтри кожного разу, коли змінюються фільтри або список авто
+    }, [filters, cars]);
 
     const handleFilterChange = (category, index) => {
         setFilters(prevFilters => {

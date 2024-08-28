@@ -24,9 +24,14 @@ export default function CarList({ cars }) {
                                 </div>
                                 <div className={css.infoContainer}>
                                 <p className={css.rating}>
-                                    ⭐ {car.rating} ({car.reviews.length} Reviews)
+                                    <svg width="16" height="16" aria-label="icon-star">
+                                    <use href="../../img/icons.svg#icon-star"></use>
+                                </svg> {car.rating} ({car.reviews.length} Reviews)
                                 </p>
-                                    <p className={css.location}>📍 {car.location}</p>
+                                    <p className={css.location}>
+                                        <svg width="16" height="16" aria-label="icon-Map">
+                                    <use href="../../img/icons.svg#icon-Map"></use>
+                                </svg>{car.location}</p>
                                 </div>
                                 <p className={css.description}>{car.description}</p>
                                 <div className={css.features}>
