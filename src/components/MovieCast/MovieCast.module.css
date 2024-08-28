@@ -1,0 +1,36 @@
+.container {
+  padding: 20px;
+  background-color: #121212; /* Темний фон */
+  color: #ffffff; /* Білий текст */
+}
+
+.castList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.castItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1e1e1e;
+  padding: 10px;
+  border-radius: 5px;
+  width: 150px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.castItem img {
+  width: 100px;
+  border-radius: 10%;
+  margin-bottom: 10px;
+}
+
+.castName {
+  font-size: 1rem;
+  color: #f5a623;
+  margin-bottom: 5px;
+}

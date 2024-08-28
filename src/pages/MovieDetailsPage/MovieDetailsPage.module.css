@@ -1,0 +1,85 @@
+.container {
+  padding: 30px;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.goBack {
+  display: flex;
+  align-items: center;
+  color: #f5a623;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.goBack:hover {
+  color: #ffa726;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.image {
+  width: 300px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.genresList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.add {
+  margin-top: 20px;
+}
+
+.addText {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.addList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.addItem {
+  font-size: 1rem;
+}
+
+.addItem a {
+  text-decoration: none;
+  color: #f5a623;
+  transition: color 0.3s;
+}
+
+.addItem a:hover {
+  color: #ffa726;
+}
+h2 {
+  color: #f5a623;
+}
+@media screen and (min-width: 768px) {
+  .infoContainer {
+    flex-direction: row;
+  }
+}
