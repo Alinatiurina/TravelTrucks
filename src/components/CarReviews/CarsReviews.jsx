@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMovieReviewById } from "../../../movies-api";
+import { getMovieReviewById } from "../../../cars-api";
 import css from "./MovieReviews.module.css";
 
 export default function MovieReviews() {

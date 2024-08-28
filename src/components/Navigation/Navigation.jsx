@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
-import { BiMoviePlay } from "react-icons/bi";
 import clsx from 'clsx';
 
 const getNavLinkClass = ({ isActive }) => {
@@ -14,13 +13,13 @@ const classLink = ({ isActive }) => {
 export default function Navigation() {
   return (
     <nav className={css.navContainer}>
+      <p className={css.logo}>Travel<span className={css.logoGray}>Trucks</span></p>
       <ul className={css.navList}>
-        <li><NavLink to="/"><BiMoviePlay className={css.icon} /></NavLink></li>
         <li><NavLink to="/" className={classLink}>
           Home
         </NavLink></li>
-        <li><NavLink to="/movies" className={classLink}>
-          Movies
+        <li><NavLink to="/catalog" className={classLink}>
+          Catalog
         </NavLink></li>
       </ul>
     </nav>

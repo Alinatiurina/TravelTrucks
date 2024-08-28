@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useParams, Link, NavLink, Outlet, useLocation} from "react-router-dom";
-import { getMovieById } from "../../../movies-api";
+import { getMovieById } from "../../../cars-api";
 import { GoChevronLeft } from "react-icons/go";
 import css from "./MovieDetailsPage.module.css";
 

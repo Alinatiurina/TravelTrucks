@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getMovieCastById } from "../../../movies-api";
+import { getMovieCastById } from "../../../cars-api";
 import css from "./MovieCast.module.css";
 
 export default function MovieCast() {

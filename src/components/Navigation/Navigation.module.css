@@ -1,8 +1,10 @@
 .navContainer {
   display: flex;
-  justify-content: start;
+  width: 1440px;
+  padding: 24px 64px;
   align-items: center;
-  padding-left: 50px;
+  gap: 450px;
+  background-color: #f2f4f7;
 }
 
 .navList {
@@ -16,23 +18,28 @@
 .navList li {
   margin: 0 15px;
 }
-
-.icon {
-  width: 40px;
-  height: 40px;
-  color: #ffffff;
+.logo {
+  color: #101828;
+  font-weight: bold;
+  margin: 0;
 }
-
+.logoGray {
+  color: #475467;
+}
 .link {
-  font-size: 19px;
   text-decoration: none;
-  color: #ffffff;
+  color: #101828;
   transition: color 0.3s;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 0.16;
 }
 
 .link:hover,
 .icon:hover,
 .active {
-  color: #f5a623;
-  font-size: 19px;
+  color: #d84343;
 }
