@@ -3,6 +3,17 @@ import { useEffect, useState } from "react";
 import { getCarById } from "../../../cars-api";
 import css from "./Features.module.css";
 import Form from "../Form/form";
+import { FaWind, FaTv } from "react-icons/fa";
+import {
+  BsDiagram3,
+  BsCupHot,
+  BsGrid3X3Gap,
+  BsPeople,
+  BsUiRadios,
+  BsDroplet,
+} from "react-icons/bs";
+import { MdLocalGasStation } from "react-icons/md";
+import { TbMicrowave } from "react-icons/tb";
 
 export default function Features() {
   const { carsId } = useParams();
@@ -25,6 +36,33 @@ export default function Features() {
     fetchCar();
   }, [carsId]);
 
+  const renderIcon = (key) => {
+    switch (key.toLowerCase()) {
+      case "automatic":
+        return <BsDiagram3 className={css.icon} />;
+      case "ac":
+        return <FaWind className={css.icon} />;
+      case "petrol":
+        return <MdLocalGasStation className={css.icon} />;
+      case "kitchen":
+        return <BsCupHot className={css.icon} />;
+      case "radio":
+        return <BsUiRadios className={css.icon} />;
+      case "bathroom":
+        return <BsDroplet className={css.icon} />;
+      case "2 adults":
+        return <BsPeople className={css.icon} />;
+      case "tv":
+        return <FaTv className={css.icon} />;
+      case "water":
+        return <BsDroplet className={css.icon} />;
+      case "microwave":
+        return <TbMicrowave className={css.icon} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className={css.box}>
       <div className={css.container}>
@@ -37,6 +75,7 @@ export default function Features() {
                 .filter((key) => car[key] === true)
                 .map((key) => (
                   <li key={key} className={css.feature}>
+                    {renderIcon(key)}
                     {key}
                   </li>
                 ))}

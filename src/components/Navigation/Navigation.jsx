@@ -13,9 +13,12 @@ const classLink = ({ isActive }) => {
 export default function Navigation() {
   return (
     <nav className={css.navContainer}>
-      <p className={css.logo}>
-        Travel<span className={css.logoGray}>Trucks</span>
-      </p>
+      <NavLink to="/">
+        <p className={css.logo}>
+          Travel<span className={css.logoGray}>Trucks</span>
+        </p>
+      </NavLink>
+
       <ul className={css.navList}>
         <li>
           <NavLink to="/" className={classLink}>

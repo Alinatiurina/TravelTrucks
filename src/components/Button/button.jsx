@@ -6,7 +6,6 @@ export default function Button({ text, type }) {
       <button className={css.button} type={type}>
         {text}
       </button>
-      {/* <a className={css.button} href={link}>{text}</a> */}
     </div>
   );
 }

@@ -3,10 +3,52 @@ import { Link, useLocation } from "react-router-dom";
 import { CiMap } from "react-icons/ci";
 import Button from "../Button/button";
 import css from "./CarsList.module.css";
+import { FaWind, FaTv } from "react-icons/fa";
+import {
+  BsDiagram3,
+  BsCupHot,
+  BsGrid3X3Gap,
+  BsPeople,
+  BsUiRadios,
+  BsDroplet,
+} from "react-icons/bs";
+import { MdLocalGasStation } from "react-icons/md";
+import { TbMicrowave } from "react-icons/tb";
+import { CgSmartHomeRefrigerator } from "react-icons/cg";
 
 export default function CarList({ cars }) {
   const defaultImg = "../../img/defaultImg.jpg";
   const location = useLocation();
+
+  const renderIcon = (key) => {
+    switch (key.toLowerCase()) {
+      case "automatic":
+        return <BsDiagram3 className={css.icon} />;
+      case "ac":
+        return <FaWind className={css.icon} />;
+      case "petrol":
+      case "gas":
+        return <MdLocalGasStation className={css.icon} />;
+      case "kitchen":
+        return <BsCupHot className={css.icon} />;
+      case "radio":
+        return <BsUiRadios className={css.icon} />;
+      case "bathroom":
+        return <BsDroplet className={css.icon} />;
+      case "water":
+        return <BsDroplet className={css.icon} />;
+      case "2 adults":
+        return <BsPeople className={css.icon} />;
+      case "tv":
+        return <FaTv className={css.icon} />;
+      case "microwave":
+        return <TbMicrowave className={css.icon} />;
+      case "refrigerator":
+        return <CgSmartHomeRefrigerator className={css.icon} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div>
@@ -34,7 +76,7 @@ export default function CarList({ cars }) {
                   <div className={css.header}>
                     <h2 className={css.name}>{car.name}</h2>
                     <div className={css.priceLike}>
-                      <p className={css.price}>€{car.price}</p>
+                      <p className={css.price}>€{car.price}.00</p>
                       <button className={css.like} onClick={handleLikeClick}>
                         <svg
                           className={`${css.icon} ${
@@ -78,6 +120,7 @@ export default function CarList({ cars }) {
                       )
                       .map((key) => (
                         <p key={key} className={css.feature}>
+                          {renderIcon(key)}
                           {key}
                         </p>
                       ))}
