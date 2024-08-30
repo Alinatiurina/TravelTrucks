@@ -4,15 +4,14 @@
   gap: 20px;
   background-color: #fff;
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 360px;
 }
 
 .location {
-  font-size: 1.2em;
-  color: #333;
-  display: flex;
-  align-items: center;
+  color: #6c717b;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 .filterItem {
@@ -33,25 +32,50 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
+  margin-bottom: 32px;
 }
-
+.title {
+  color: #475467;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.text {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 48px;
+  position: relative;
+}
+.text::after {
+  content: "";
+  width: 360px;
+  height: 1px;
+  background-color: #dadde1;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+}
 .filterButton {
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 112px;
+  height: 112px;
+  border-radius: 12px;
+  border: 1px solid #dadde1;
+  background-color: transparent;
+  mix-blend-mode: multiply;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-.filterButton:hover {
-  background-color: #f0f0f0;
-}
-
-.filterButton.active {
+.filterButton.active,
+.filterButton:hover,
+.filterButton:focus {
   border-color: #ff6b6b;
-  background-color: #ffe6e6;
-  color: #ff6b6b;
 }
 
 .searchButton {

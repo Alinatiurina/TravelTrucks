@@ -28,7 +28,11 @@
   padding: 20px;
   flex-grow: 1;
 }
-
+.ratingStar {
+  font-size: 18px;
+  color: #ffc531;
+  margin: 0;
+}
 .header {
   display: flex;
   justify-content: space-between;
@@ -61,6 +65,8 @@
 }
 .infoContainer {
   display: flex;
+  align-items: center;
+  gap: 16px;
 }
 .description {
   font-size: 0.9em;
@@ -70,6 +76,7 @@
 
 .features {
   display: flex;
+  flex-wrap: wrap;
   padding: 12px 18px;
   align-items: center;
   gap: 8px;
@@ -101,4 +108,26 @@
 
 .showMore:hover {
   background-color: #ff4f4f;
+}
+.priceLike {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.like {
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+.like:hover,
+.like:active,
+.like:focus {
+  border-color: transparent;
+}
+.icon {
+  fill: #101828;
+}
+.checked {
+  fill: #eb5d5d;
 }
