@@ -128,24 +128,21 @@ export default function Catalog() {
         ) : (
           <>
             <CarsList cars={currentCars} />
-            {filteredCars.length === 0 && !loading && !error ? (
-              <b>Results not found</b>
-            ) : (
-              <div className={css.pagination}>
-                <span>
-                  Page {currentPage} of {totalPages}
-                </span>
-                <button
-                  className={css.buttonLoadMore}
-                  onClick={handleNextPage}
-                  disabled={
-                    currentPage === totalPages || filteredCars.length === 0
-                  }
-                >
-                  Load more
-                </button>
-              </div>
-            )}
+
+            <div className={css.pagination}>
+              <span>
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                className={css.buttonLoadMore}
+                onClick={handleNextPage}
+                disabled={
+                  currentPage === totalPages || filteredCars.length === 0
+                }
+              >
+                Load more
+              </button>
+            </div>
           </>
         )}
       </div>
