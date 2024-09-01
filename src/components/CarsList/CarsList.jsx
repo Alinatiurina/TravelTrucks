@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiMap } from "react-icons/ci";
 import Button from "../Button/button";
@@ -55,10 +55,17 @@ export default function CarList({ cars }) {
       {cars.length > 0 && (
         <ul className={css.list}>
           {cars.map((car) => {
-            const [isLiked, setIsLiked] = useState(false);
+            // Отримуємо список збережених "лайків" з локального сховища
+            const likedCars = JSON.parse(localStorage.getItem("likedCars")) || {};
+            const [isLiked, setIsLiked] = useState(likedCars[car.id] || false);
 
             const handleLikeClick = () => {
-              setIsLiked((prevIsLiked) => !prevIsLiked);
+              setIsLiked((prevIsLiked) => {
+                const updatedIsLiked = !prevIsLiked;
+                const updatedLikedCars = { ...likedCars, [car.id]: updatedIsLiked };
+                localStorage.setItem("likedCars", JSON.stringify(updatedLikedCars));
+                return updatedIsLiked;
+              });
             };
 
             return (

@@ -12,7 +12,7 @@ import {
 import { IoGridOutline } from "react-icons/io5";
 import { TbMicrowave } from "react-icons/tb";
 
-export default function Filters({ filters, onFilterChange }) {
+export default function Filters({ filters, onFilterChange, onSearchClick }) {
   return (
     <div className={css.filtersContainer}>
       <div className={css.location}>
@@ -70,8 +70,8 @@ export default function Filters({ filters, onFilterChange }) {
           ))}
         </div>
 
-        <Button text="Search" type="button"></Button>
-      </div>
+         <Button text="Search" type="button" onClick={onSearchClick}></Button>
+    </div>
     </div>
   );
 }

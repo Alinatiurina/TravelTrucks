@@ -145,16 +145,22 @@ export default function Catalog() {
       {error && <b>Error fetching data</b>}
       <Filters filters={filters} onFilterChange={handleFilterChange} />
       <div className={css.list}>
-        <CarsList cars={currentCars} />
-        <div className={css.pagination}>
-          <button
-            className={css.buttonLoadMore}
-            onClick={handleNextPage}
-            disabled={currentPage === totalPages}
-          >
-            Load more
-          </button>
-        </div>
+        {filteredCars.length === 0 ? (
+          <b>Results not found</b>
+        ) : (
+          <>
+            <CarsList cars={currentCars} />
+            <div className={css.pagination}>
+              <button
+                className={css.buttonLoadMore}
+                onClick={handleNextPage}
+                disabled={currentPage === totalPages || filteredCars.length === 0}
+              >
+                Load more
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
