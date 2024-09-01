@@ -15,11 +15,11 @@ import { TbMicrowave } from "react-icons/tb";
 export default function Filters({ filters, onFilterChange, onSearchClick }) {
   return (
     <div className={css.filtersContainer}>
-      <div className={css.location}>
+      {/* <div className={css.location}>
         <h3 className={css.lable}>Location</h3>
         <input className={css.input} type="text" placeholder="Kyiv, Ukraine" />
         <IoMapOutline className={css.mupIcon} />
-      </div>
+      </div> */}
 
       <div className={css.section}>
         <h3 className={css.title}>Filters</h3>
