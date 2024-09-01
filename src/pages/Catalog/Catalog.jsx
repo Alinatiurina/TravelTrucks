@@ -30,21 +30,20 @@ export default function Catalog() {
   const carsPerPage = 4;
 
   useEffect(() => {
-    async function fetchCars() {
+    async function fetchCars(page) {
       try {
         setError(false);
         setLoading(true);
-        const data = await GetCars();
-        setFilteredCars((prevCars) => [...prevCars, ...data.items]);
+        const data = await GetCars(page);
+        setCars((prevCars) => [...prevCars, ...data.items]);
       } catch (error) {
-        setError(true);
         setError(true);
       } finally {
         setLoading(false);
       }
     }
-    fetchCars();
-  }, []);
+    fetchCars(currentPage);
+  }, [currentPage]);
 
   useEffect(() => {
     const applyFilters = () => {
@@ -116,6 +115,7 @@ export default function Catalog() {
       setCurrentPage(currentPage + 1);
     }
   };
+
   useEffect(() => {
     async function fetchMoreCars() {
       if (currentPage > 1) {
@@ -140,33 +140,26 @@ export default function Catalog() {
 
   return (
     <div className={css.catalogContainer}>
-      <Filters filters={filters} onFilterChange={handleFilterChange} />
       {loading && <b>Loading...</b>}
       {error && <b>Error fetching data</b>}
+      <Filters filters={filters} onFilterChange={handleFilterChange} />
       <div className={css.list}>
-        {loading || error ? (
-          <></>
+        {filteredCars.length === 0 ? (
+          <b>Results not found</b>
         ) : (
           <>
             <CarsList cars={currentCars} />
-            {filteredCars.length === 0 && !loading && !error ? (
-              <b>Results not found</b>
-            ) : (
-              <div className={css.pagination}>
-                <span>
-                  Page {currentPage} of {totalPages}
-                </span>
-                <button
-                  className={css.buttonLoadMore}
-                  onClick={handleNextPage}
-                  disabled={
-                    currentPage === totalPages || filteredCars.length === 0
-                  }
-                >
-                  Load more
-                </button>
-              </div>
-            )}
+            <div className={css.pagination}>
+              <button
+                className={css.buttonLoadMore}
+                onClick={handleNextPage}
+                disabled={
+                  currentPage === totalPages || filteredCars.length === 0
+                }
+              >
+                Load more
+              </button>
+            </div>
           </>
         )}
       </div>
