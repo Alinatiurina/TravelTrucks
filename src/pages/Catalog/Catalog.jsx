@@ -116,6 +116,27 @@ export default function Catalog() {
       setCurrentPage(currentPage + 1);
     }
   };
+  useEffect(() => {
+    async function fetchMoreCars() {
+      if (currentPage > 1) {
+        try {
+          setError(false);
+          setLoading(true);
+          const data = await GetCars(currentPage);
+          setCars((prevCars) => [...prevCars, ...data.items]);
+          setFilteredCars((prevFilteredCars) => [
+            ...prevFilteredCars,
+            ...data.items,
+          ]);
+        } catch (error) {
+          setError(true);
+        } finally {
+          setLoading(false);
+        }
+      }
+    }
+    fetchMoreCars();
+  }, [currentPage]);
 
   return (
     <div className={css.catalogContainer}>
@@ -128,21 +149,24 @@ export default function Catalog() {
         ) : (
           <>
             <CarsList cars={currentCars} />
-
-            <div className={css.pagination}>
-              <span>
-                Page {currentPage} of {totalPages}
-              </span>
-              <button
-                className={css.buttonLoadMore}
-                onClick={handleNextPage}
-                disabled={
-                  currentPage === totalPages || filteredCars.length === 0
-                }
-              >
-                Load more
-              </button>
-            </div>
+            {filteredCars.length === 0 && !loading && !error ? (
+              <b>Results not found</b>
+            ) : (
+              <div className={css.pagination}>
+                <span>
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  className={css.buttonLoadMore}
+                  onClick={handleNextPage}
+                  disabled={
+                    currentPage === totalPages || filteredCars.length === 0
+                  }
+                >
+                  Load more
+                </button>
+              </div>
+            )}
           </>
         )}
       </div>
