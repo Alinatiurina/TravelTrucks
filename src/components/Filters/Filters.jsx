@@ -11,16 +11,11 @@ import {
 } from "react-icons/bs";
 import { IoGridOutline } from "react-icons/io5";
 import { TbMicrowave } from "react-icons/tb";
+import { IoHeartOutline } from "react-icons/io5";
 
 export default function Filters({ filters, onFilterChange, onSearchClick }) {
   return (
     <div className={css.filtersContainer}>
-      {/* <div className={css.location}>
-        <h3 className={css.lable}>Location</h3>
-        <input className={css.input} type="text" placeholder="Kyiv, Ukraine" />
-        <IoMapOutline className={css.mupIcon} />
-      </div> */}
-
       <div className={css.section}>
         <h3 className={css.title}>Filters</h3>
 
@@ -68,6 +63,18 @@ export default function Filters({ filters, onFilterChange, onSearchClick }) {
               {filter.label}
             </button>
           ))}
+        </div>
+
+        <p className={css.text}>Liked list</p>
+        <div className={css.filters}>
+          <button
+            className={`${css.filterButton} ${
+              filters.like.active ? css.active : ""
+            }`}
+            onClick={() => onFilterChange("like")}
+          >
+            <IoHeartOutline className={css.icon} />
+          </button>
         </div>
       </div>
     </div>

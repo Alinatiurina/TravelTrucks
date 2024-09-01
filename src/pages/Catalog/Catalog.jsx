@@ -24,6 +24,7 @@ export default function Catalog() {
       { label: "Fully Integrated", active: false },
       { label: "Alcove", active: false },
     ],
+    like: { active: false }, // Додаємо фільтр для isLiked
   });
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -83,13 +84,14 @@ export default function Catalog() {
               return car.form === "fullyIntegrated";
             case "Alcove":
               return car.form === "alcove";
-
             default:
               return true;
           }
         });
 
-        return matchesEquipment && matchesType;
+        const matchesLike = !filters.like.active || car.isLiked;
+
+        return matchesEquipment && matchesType && matchesLike;
       });
 
       setFilteredCars(filtered);
@@ -101,11 +103,16 @@ export default function Catalog() {
   const handleFilterChange = (category, index) => {
     setFilters((prevFilters) => {
       const newFilters = { ...prevFilters };
-      newFilters[category][index].active = !newFilters[category][index].active;
+      if (category === "like") {
+        newFilters.like.active = !newFilters.like.active;
+      } else {
+        newFilters[category][index].active =
+          !newFilters[category][index].active;
+      }
       return newFilters;
     });
 
-    setCurrentPage(1);
+    setCurrentPage(1); // Повертаємося на першу сторінку при зміні фільтрів
   };
 
   const indexOfLastCar = currentPage * carsPerPage;
@@ -122,6 +129,7 @@ export default function Catalog() {
       }
     }
   };
+
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
@@ -130,6 +138,7 @@ export default function Catalog() {
       }
     }
   };
+
   useEffect(() => {
     async function fetchMoreCars() {
       if (currentPage > 1) {
