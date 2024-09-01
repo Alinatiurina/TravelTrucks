@@ -64,18 +64,6 @@ export default function Filters({ filters, onFilterChange, onSearchClick }) {
             </button>
           ))}
         </div>
-
-        <p className={css.text}>Liked list</p>
-        <div className={css.filters}>
-          <button
-            className={`${css.filterButton} ${
-              filters.like.active ? css.active : ""
-            }`}
-            onClick={() => onFilterChange("like")}
-          >
-            <IoHeartOutline className={css.icon} />
-          </button>
-        </div>
       </div>
     </div>
   );

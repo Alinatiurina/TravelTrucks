@@ -24,7 +24,6 @@ export default function Catalog() {
       { label: "Fully Integrated", active: false },
       { label: "Alcove", active: false },
     ],
-    like: { active: false }, // Додаємо фільтр для isLiked
   });
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -89,9 +88,7 @@ export default function Catalog() {
           }
         });
 
-        const matchesLike = !filters.like.active || car.isLiked;
-
-        return matchesEquipment && matchesType && matchesLike;
+        return matchesEquipment && matchesType;
       });
 
       setFilteredCars(filtered);
@@ -112,7 +109,7 @@ export default function Catalog() {
       return newFilters;
     });
 
-    setCurrentPage(1); // Повертаємося на першу сторінку при зміні фільтрів
+    setCurrentPage(1);
   };
 
   const indexOfLastCar = currentPage * carsPerPage;
