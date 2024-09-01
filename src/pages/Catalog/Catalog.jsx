@@ -74,8 +74,19 @@ export default function Catalog() {
         });
 
         const matchesType =
-          activeTypeFilters.length === 0 ||
-          activeTypeFilters.includes(car.form);
+          activeTypeFilters.every((filter) => {
+             switch (filter) {
+            case "Van":
+              return car.form === "panelTruck";
+            case "Fully Integrated":
+              return car.form === "fullyIntegrated";
+            case "Alcove":
+              return car.form === "alcove";
+            
+            default:
+              return true;
+          }
+          })
 
         return matchesEquipment && matchesType;
       });
