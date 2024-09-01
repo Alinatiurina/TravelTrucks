@@ -38,7 +38,6 @@ export default function Catalog() {
         setLoading(true);
         const data = await GetCars(page);
         setCars(() => [...data.items]);
-        console.log(data);
       } catch (error) {
         setError(true);
       } finally {
@@ -105,6 +104,8 @@ export default function Catalog() {
       newFilters[category][index].active = !newFilters[category][index].active;
       return newFilters;
     });
+
+    setCurrentPage(1);
   };
 
   const indexOfLastCar = currentPage * carsPerPage;
