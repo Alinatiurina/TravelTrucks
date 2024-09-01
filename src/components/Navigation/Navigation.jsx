@@ -12,25 +12,27 @@ const classLink = ({ isActive }) => {
 
 export default function Navigation() {
   return (
-    <nav className={css.navContainer}>
-      <NavLink to="/">
-        <p className={css.logo}>
-          Travel<span className={css.logoGray}>Trucks</span>
-        </p>
-      </NavLink>
+    <div className={css.header}>
+      <nav className={css.navContainer}>
+        <NavLink to="/">
+          <p className={css.logo}>
+            Travel<span className={css.logoGray}>Trucks</span>
+          </p>
+        </NavLink>
 
-      <ul className={css.navList}>
-        <li>
-          <NavLink to="/" className={classLink}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/catalog" className={classLink}>
-            Catalog
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+        <ul className={css.navList}>
+          <li>
+            <NavLink to="/" className={classLink}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/catalog" className={classLink}>
+              Catalog
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
 }

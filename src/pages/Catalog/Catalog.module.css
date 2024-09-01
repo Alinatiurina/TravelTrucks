@@ -3,6 +3,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 48px;
+  width: 1440px;
 }
 .list {
   display: flex;
@@ -17,4 +18,15 @@
   letter-spacing: -0.08px;
   font-family: "Inter", sans-serif;
   color: #ffffff;
+}
+.buttonLoadMore:disabled {
+  background-color: #ffffff;
+  border: 1px solid #dadde1;
+  color: #dadde1;
+}
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }

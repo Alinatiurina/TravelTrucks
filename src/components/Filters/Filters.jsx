@@ -69,9 +69,7 @@ export default function Filters({ filters, onFilterChange, onSearchClick }) {
             </button>
           ))}
         </div>
-
-         <Button text="Search" type="button" onClick={onSearchClick}></Button>
-    </div>
+      </div>
     </div>
   );
 }

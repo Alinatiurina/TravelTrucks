@@ -55,15 +55,21 @@ export default function CarList({ cars }) {
       {cars.length > 0 && (
         <ul className={css.list}>
           {cars.map((car) => {
-            // Отримуємо список збережених "лайків" з локального сховища
-            const likedCars = JSON.parse(localStorage.getItem("likedCars")) || {};
+            const likedCars =
+              JSON.parse(localStorage.getItem("likedCars")) || {};
             const [isLiked, setIsLiked] = useState(likedCars[car.id] || false);
 
             const handleLikeClick = () => {
               setIsLiked((prevIsLiked) => {
                 const updatedIsLiked = !prevIsLiked;
-                const updatedLikedCars = { ...likedCars, [car.id]: updatedIsLiked };
-                localStorage.setItem("likedCars", JSON.stringify(updatedLikedCars));
+                const updatedLikedCars = {
+                  ...likedCars,
+                  [car.id]: updatedIsLiked,
+                };
+                localStorage.setItem(
+                  "likedCars",
+                  JSON.stringify(updatedLikedCars)
+                );
                 return updatedIsLiked;
               });
             };

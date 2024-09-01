@@ -3,8 +3,10 @@
   flex-direction: column;
   background-color: #ffffff;
   color: #101828;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 .header {
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }

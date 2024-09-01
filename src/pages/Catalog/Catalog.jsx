@@ -30,20 +30,21 @@ export default function Catalog() {
   const carsPerPage = 4;
 
   useEffect(() => {
-    async function fetchCars(page) {
+    async function fetchCars() {
       try {
         setError(false);
         setLoading(true);
-        const data = await GetCars(page);
-        setCars((prevCars) => [...prevCars, ...data.items]);
+        const data = await GetCars();
+        setFilteredCars((prevCars) => [...prevCars, ...data.items]);
       } catch (error) {
+        setError(true);
         setError(true);
       } finally {
         setLoading(false);
       }
     }
-    fetchCars(currentPage);
-  }, [currentPage]);
+    fetchCars();
+  }, []);
 
   useEffect(() => {
     const applyFilters = () => {
@@ -73,20 +74,19 @@ export default function Catalog() {
           }
         });
 
-        const matchesType =
-          activeTypeFilters.every((filter) => {
-             switch (filter) {
+        const matchesType = activeTypeFilters.every((filter) => {
+          switch (filter) {
             case "Van":
               return car.form === "panelTruck";
             case "Fully Integrated":
               return car.form === "fullyIntegrated";
             case "Alcove":
               return car.form === "alcove";
-            
+
             default:
               return true;
           }
-          })
+        });
 
         return matchesEquipment && matchesType;
       });
@@ -117,48 +117,35 @@ export default function Catalog() {
     }
   };
 
-  useEffect(() => {
-    async function fetchMoreCars() {
-      if (currentPage > 1) {
-        try {
-          setError(false);
-          setLoading(true);
-          const data = await GetCars(currentPage);
-          setCars((prevCars) => [...prevCars, ...data.items]);
-          setFilteredCars((prevFilteredCars) => [
-            ...prevFilteredCars,
-            ...data.items,
-          ]);
-        } catch (error) {
-          setError(true);
-        } finally {
-          setLoading(false);
-        }
-      }
-    }
-    fetchMoreCars();
-  }, [currentPage]);
-
   return (
     <div className={css.catalogContainer}>
+      <Filters filters={filters} onFilterChange={handleFilterChange} />
       {loading && <b>Loading...</b>}
       {error && <b>Error fetching data</b>}
-      <Filters filters={filters} onFilterChange={handleFilterChange} />
       <div className={css.list}>
-        {filteredCars.length === 0 ? (
-          <b>Results not found</b>
+        {loading || error ? (
+          <></>
         ) : (
           <>
             <CarsList cars={currentCars} />
-            <div className={css.pagination}>
-              <button
-                className={css.buttonLoadMore}
-                onClick={handleNextPage}
-                disabled={currentPage === totalPages || filteredCars.length === 0}
-              >
-                Load more
-              </button>
-            </div>
+            {filteredCars.length === 0 && !loading && !error ? (
+              <b>Results not found</b>
+            ) : (
+              <div className={css.pagination}>
+                <span>
+                  Page {currentPage} of {totalPages}
+                </span>
+                <button
+                  className={css.buttonLoadMore}
+                  onClick={handleNextPage}
+                  disabled={
+                    currentPage === totalPages || filteredCars.length === 0
+                  }
+                >
+                  Load more
+                </button>
+              </div>
+            )}
           </>
         )}
       </div>
